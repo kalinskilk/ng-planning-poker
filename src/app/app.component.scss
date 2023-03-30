@@ -1,0 +1,26 @@
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.dark,  .light {
+  margin: 0 5px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.dark.active,
+.light.active {
+  background: #f9f9f9;
+}
+
+.light {
+    color: #fdb600;
+  }
+
+  .darkMode {
+    background: #13131d;
+  }

@@ -1,0 +1,56 @@
+input[type="checkbox"] {
+  display: none;
+}
+
+.switch-btn {
+  width: 100px;
+  background-color: #c5ccd3;
+  border: 4px solid #bec5cc;
+  border-radius: 30px;
+  transition: ease 0.5s;
+}
+
+label {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff700;
+  border-radius: 30px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  transform: translate(-11px, 19px) rotate(120deg);
+  user-select: none;
+  color: #17193f;
+  transition: ease-in-out 0.5s;
+}
+
+input[type="checkbox"]:checked ~ .switch-btn {
+  border: 4px solid #2e3052;
+  background-color: #7635dc;
+}
+
+input[type="checkbox"]:checked ~ .switch-btn label {
+  transform: translateX(calc(100px - 35px));
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: ease 0.5s;
+}
+
+input[type="checkbox"]:checked ~ .switch-btn label .icons {
+  transform: translateX(-22px);
+}
+
+input[type="checkbox"]:not(:checked) ~ .switch-btn label {
+  transition: ease 0.5s;
+}
+
+.align-right {
+  float: right !important;
+}

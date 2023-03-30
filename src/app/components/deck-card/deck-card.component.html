@@ -1,0 +1,12 @@
+<div
+  class="card"
+  (click)="selectPoint()"
+  [ngClass]="{ selected: selected }"
+  id="card-sel-number-point-{{ numberPoints }}"
+>
+  <div class="card-content">
+    <div id="card-content-number-point-{{ numberPoints }}">
+      {{ numberPoints }}
+    </div>
+  </div>
+</div>
