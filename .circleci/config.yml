@@ -7,6 +7,7 @@ jobs:
     docker:
       - image: cimg/node:16.13.1-browsers
     steps:
+      - checkout
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run:
@@ -14,7 +15,7 @@ jobs:
             google-chrome --version
             chromedriver --version
           name: Check install
-      - checkout
+
       - restore_cache:
           key: ng-planning-poker-{{ .Branch }}-{{ checksum "package.json" }}
       - run: npm install
