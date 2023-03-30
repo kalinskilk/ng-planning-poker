@@ -13,4 +13,4 @@ jobs:
           key: ng-planning-poker-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      - run: npm run test:ci
+      - run: xvfb-run -a npm run test:ci
