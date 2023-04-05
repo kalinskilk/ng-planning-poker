@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageEnum, StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-dark-mode-btn',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DarkModeBtnComponent implements OnInit {
   darkMode = true;
+
+  constructor(private storageService: StorageService) {}
 
   ngOnInit(): void {
     this.getPreferences();
@@ -18,10 +21,20 @@ export class DarkModeBtnComponent implements OnInit {
 
   toggleDarkTheme(): void {
     document.body.classList.toggle('dark-theme');
+    this.saveDarkMode();
   }
-  /*  TODO: PEGAR DO STORAGE */
+
+  saveDarkMode(): void {
+    this.storageService.setItem(StorageEnum.DARK_MODE, `${this.darkMode}`);
+  }
+
   getPreferences(): void {
-    this.darkMode = true;
-    this.toggleDarkTheme();
+    const darkMode = this.storageService.getItem(StorageEnum.DARK_MODE);
+    if (darkMode === 'true') {
+      this.darkMode = true;
+      this.toggleDarkTheme();
+    } else {
+      this.darkMode = false;
+    }
   }
 }

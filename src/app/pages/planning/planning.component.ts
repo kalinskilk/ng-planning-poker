@@ -16,6 +16,8 @@ export class PlanningComponent {
     { point: 21, selected: false },
   ];
 
+  /* constructor(private planningService: PlanningService) {} */
+
   onSelectCard(point: number): void {
     const pointSel = this.points.find((el) => el.point === point);
     if (pointSel) {
@@ -26,5 +28,6 @@ export class PlanningComponent {
         el.selected = false;
       }
     });
+    /* this.planningService.send(point.toString()); */
   }
 }

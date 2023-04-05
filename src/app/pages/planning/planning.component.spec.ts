@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 import { DeckCardModule } from 'src/app/components/deck-card/deck-card.module';
 
 import { PlanningComponent } from './planning.component';
+import { PlanningService } from './planning.service';
 
 describe('PlanningComponent', () => {
   let component: PlanningComponent;
@@ -16,6 +17,7 @@ describe('PlanningComponent', () => {
       imports: [CommonModule, DeckCardModule],
       declarations: [PlanningComponent],
       teardown: { destroyAfterEach: false }, //SHOW COMPONENT ON TESTS
+      providers: [PlanningService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PlanningComponent);
