@@ -8,7 +8,13 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'planning',
+        path: '',
+        loadChildren: () =>
+          import('src/app/pages/home/home.module').then((m) => m.HomeModule),
+      },
+
+      {
+        path: 'planning/:id',
         loadChildren: () =>
           import('src/app/pages/planning/planning.module').then(
             (m) => m.PlanningModule

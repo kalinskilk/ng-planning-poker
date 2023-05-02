@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <app-card-home
+        [footerTemplate]="templateButtonNewRoom"
+        [exitPage]="exitPage"
+      >
+        <h4>Criar Uma sala</h4>
+        <p>Crie uma sala para jogar com seus amigos.</p>
+      </app-card-home>
+    </div>
+    <div class="col-sm-6">
+      <app-card-home
+        [footerTemplate]="templateJoinRoom"
+        [exitPage]="exitPage"
+        [useIconPlus]="false"
+      >
+        <h4>Entre em uma sala:</h4>
+        <p>Informe a sala em que seus amigos estão.</p>
+      </app-card-home>
+    </div>
+  </div>
+</div>
+<ng-template #templateButtonNewRoom>
+  <button
+    type="button"
+    class="btn btn-sm btn-block btn-card"
+    (click)="createNewRoom()"
+    id="btn-new-room"
+  >
+    Criar sala
+  </button>
+</ng-template>
+<ng-template #templateJoinRoom>
+  <button
+    type="button"
+    class="btn btn-sm btn-block btn-card"
+    (click)="joinRoom()"
+    id="btn-join-room"
+  >
+    Entrar em uma sala
+  </button>
+</ng-template>

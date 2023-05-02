@@ -1,7 +1,26 @@
 <div class="container">
-  <div class="footer">
+  <div class="body">
     <div class="row">
-      <div class="col-sm-2 col-md-1 col-3 p-1 mb-1" *ngFor="let obj of points">
+      <div
+        class="col-sm-2 col-md-2 col-lg-2 col-xl-1 col-3 p-1 mb-1"
+        *ngFor="let obj of votes"
+      >
+        <app-votes-cards
+          [name]="obj.name"
+          [pointVote]="obj.point"
+          [flipped]="obj.flipped"
+        >
+        </app-votes-cards>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer scroll-footer">
+    <div class="row">
+      <div
+        class="col-sm-2 col-md-2 col-lg-2 col-xl-1 col-3 p-1 mb-1"
+        *ngFor="let obj of points"
+      >
         <app-deck-card
           [numberPoints]="obj.point"
           [selected]="obj.selected"
@@ -9,5 +28,17 @@
         ></app-deck-card>
       </div>
     </div>
+  </div>
+</div>
+
+<div
+  class="floating-container"
+  *ngIf="user.role === 'SM'"
+  (click)="flipCards()"
+  id="btn-flip-cards"
+>
+  <div class="floating-button">
+    <i class="fa fa-eye" *ngIf="!isFlippedCards"></i>
+    <i class="fa fa-eye-slash" *ngIf="isFlippedCards"></i>
   </div>
 </div>

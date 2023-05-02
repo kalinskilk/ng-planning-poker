@@ -1,0 +1,13 @@
+<div class="name-votes">{{ name }}</div>
+<div
+  class="card"
+  [@zoomInOnEnter]
+  [@fadeOut]
+  [@flip]="flipped"
+  [ngClass]="{ 'card-background': !flipped, 'card-no-background': flipped }"
+  id="card-vote-{{ name }}"
+>
+  <div class="card-content" *ngIf="flipped">
+    <div id="point-vote-{{ name }}">{{ pointVote }}</div>
+  </div>
+</div>

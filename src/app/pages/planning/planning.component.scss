@@ -1,8 +1,137 @@
+.body {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
 .footer {
   position: fixed;
   left: 0;
   width: 100%;
   padding-left: 3%;
   padding-right: 3%;
-  bottom: 70px;
+  bottom: 5px;
+}
+
+.deck-votes {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 2em;
+}
+
+.btn-card {
+  z-index: 2;
+
+  width: 90%;
+  background-color: #8f00ff;
+  font-weight: bold;
+  color: var(--card-label-color);
+}
+
+.floating-container {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  top: 47px;
+  right: 8px;
+}
+
+.floating-container:hover .floating-button {
+  box-shadow: 0 10px 25px rgba(142, 19, 236, 0.6);
+  -webkit-transform: translatey(5px);
+  transform: translatey(5px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.floating-container .floating-button {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  background: #8f00ff;
+  top: 5px;
+  border-radius: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: white;
+  line-height: 65px;
+  text-align: center;
+  font-size: 23px;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgba(44, 179, 240, 0.6);
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.floating-container .float-element {
+  position: relative;
+  display: block;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 15px auto;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  line-height: 50px;
+  z-index: 0;
+  opacity: 0;
+  -webkit-transform: translateY(5px);
+  transform: translateY(5px);
+}
+.floating-container .float-element .material-icons {
+  vertical-align: middle;
+  font-size: 16px;
+}
+.floating-container .float-element:nth-child(1) {
+  background: #42a5f5;
+  box-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5);
+}
+.floating-container .float-element:nth-child(2) {
+  background: #4caf50;
+  box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
+}
+.floating-container .float-element:nth-child(3) {
+  background: #ff9800;
+  box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatars__item {
+  /* Nagative margin make avatar overlap to previous one */
+  margin-left: -0.25rem;
+}
+
+.avatars__image {
+  /* Add a white curve between avatars */
+  box-shadow: 0 0 0 0.25rem #fff;
+
+  /* Center the content */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  /* Rounded border */
+  border-radius: 9999px;
+}
+
+@media (max-width: 400px) {
+  .scroll-footer {
+    height: 205px;
+    overflow: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .floating-container .floating-button {
+    top: 340px;
+    left: 10px;
+  }
 }

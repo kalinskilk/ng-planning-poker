@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 export enum StorageEnum {
   DARK_MODE = 'DARK_MODE',
+  USER = 'USER',
 }
 
 @Injectable({ providedIn: 'root' })

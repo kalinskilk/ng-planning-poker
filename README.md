@@ -6,41 +6,66 @@
   </a>&nbsp;
 </p>
 
+## Repositório do Servidor
+
+https://github.com/kalinskilk/node-planning-poker
+
+## Como usar
+
+  <!-- TODO DOCUMENTAR PARA DOCKER TBM -->
+
+- Instale as depencias utilizado `npm install` ou `yarn install`
+
+- Faça o mesmo para o servidor
+
+- Execute o comando `npm start` ou `yarn start` tanto para o servidor como para o client
+
 ## TODO
 
 [X] TESTES DECK CARD COMPONENT
 
-[ ] TESTES DARK MODE BTN
+[X] TESTES DARK MODE BTN
 
-[ ] TESTES DASHBOARD
+[X] TESTES DASHBOARD
 
-[-] TESTES PLANNING
+[X] TESTES PLANNING
 
-[ ] Implementar board cards
+[X] Implementar board cards
 
-[ ] teste board cards
+[X] teste board cards
 
-[ ] teste com varios users
+[X] teste com varios users
 
-[ ] LOGIN NOME E EMAIL, PEDIR ID DA ROOM
+[X] LOGIN NOME E EMAIL, PEDIR ID DA ROOM
 
-[ ] Integrar web sockets
+[X] Integrar web sockets
 
-[ ] testar web sockets
+[X] testar web sockets
 
-[ ] ROOM JOIN
+[X] ROOM JOIN COMPONENT
+[X] ROOM JOIN SOCKET
 
-[ ] ROOM CREATE
+[X] ROOM CREATE COMPONENT
+[X] ROOM CREATE SOCKET
 
-[ ] ROOM END VOTATION
+[X] ROOM END VOTATION
 
-[ ] ROOM VIEW VOTES
+[X] ROOM VIEW VOTES
 
-[ ] ROOM RESTART VOTATION
+[X] ROOM RESTART VOTATION
+
+[X] STORAGE SERVICE TEST
+[X] TOAST SERVICE TEST
+
+[] LISTAR USUARIOS ATIVOS MOSTRANDO AVATARS
+
+[] MOSTRAR PONTUAÇÃO CAMPEÃ
+
+[] VERIFICAR COMPONENT CARD HOME PARA RECEBER O DARK MODE
 
 # CI/CD ACTIONS
 
-[ ] TESTS
+[x] TESTS
 
 [ ] BUILD
 
@@ -51,3 +76,13 @@
 # AJUSTAR README
 
 Reescrever readme.
+
+# LIBS
+
+Toast: `ngx-toastr`
+
+Socket: `ngx-socket-io`
+
+Design: `Bootstrap`
+
+Animations: `angular-animations`

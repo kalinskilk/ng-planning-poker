@@ -1,6 +1,6 @@
 import { StorageEnum, StorageService } from './storage.service';
 
-fdescribe('StorageService', () => {
+describe('StorageService', () => {
   let service: StorageService;
 
   beforeEach(() => {

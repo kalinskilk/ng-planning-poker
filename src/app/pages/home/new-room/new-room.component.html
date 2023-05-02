@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="col-sm-6">
+    <app-card-home
+      [footerTemplate]="templateButtonNewRoom"
+      [exitPage]="exitPage"
+    >
+      <div class="card-body row">
+        <div class="col-sm-12">
+          <h4>Seu Nome</h4>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="name"
+            maxlength="50"
+            id="input-name"
+          />
+        </div>
+        <div class="col-sm-12">
+          <h4>Permissão:</h4>
+          <select [(ngModel)]="role" class="form-control" id="sel-role-player">
+            <option ngValue="PLAYER">Player</option>
+            <option ngValue="SM">Scrum Master</option>
+            <option ngValue="VISIT">Visitante</option>
+          </select>
+        </div>
+      </div>
+    </app-card-home>
+  </div>
+</div>
+
+<ng-template #templateButtonNewRoom>
+  <button
+    type="button"
+    class="btn btn-sm btn-block btn-card"
+    (click)="createNewRoom()"
+    id="btn-new-room"
+  >
+    Criar sala
+  </button>
+</ng-template>

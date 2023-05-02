@@ -54,3 +54,10 @@ input[type="checkbox"]:not(:checked) ~ .switch-btn label {
 .align-right {
   float: right !important;
 }
+
+.position {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 1;
+}
