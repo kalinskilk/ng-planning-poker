@@ -44,4 +44,8 @@ export class PlanningService {
       success: boolean;
     }>(`${environment.API}/get-votes?roomId=${roomId}`);
   }
+
+  leaveRoom(input: { roomId: string; userName: string }) {
+    this.socket.emit('leave-room', input);
+  }
 }

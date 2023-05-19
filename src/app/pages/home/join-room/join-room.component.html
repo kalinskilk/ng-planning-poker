@@ -48,7 +48,14 @@
     type="button"
     class="btn btn-sm btn-block btn-card"
     (click)="joinRoom()"
+    [disabled]="loading"
   >
+    <span
+      class="spinner-border spinner-border-sm"
+      role="status"
+      aria-hidden="true"
+      *ngIf="loading"
+    ></span>
     Entrar na sala
   </button>
 </ng-template>

@@ -20,7 +20,7 @@ export class JoinRoomComponent {
 
   @ViewChild('templateButtonNewRoom', { read: ViewContainerRef })
   templateButtonNewRoom!: ViewContainerRef;
-
+  loading = false;
   constructor(
     private storageService: StorageService,
     private roomService: RoomService,
@@ -41,6 +41,9 @@ export class JoinRoomComponent {
   }
 
   joinRoom(): void {
+    if (this.loading) {
+      return;
+    }
     if (!this.player.name || !this.room) {
       const message = `O campo ${
         !this.player.name ? 'Nome' : 'Sala'
@@ -48,24 +51,37 @@ export class JoinRoomComponent {
       this.toastService.error({ message });
       return;
     }
-    this.exitPage = true;
-
+    this.loading = true;
     this.roomService
       .joinRoom(this.player, this.room)
       .pipe(first())
-      .subscribe((result) => {
-        if (!result.success) {
-          this.toastService.error({
-            message: result.message,
-            override: { timeOut: 5000 },
-          });
-          return;
+      .subscribe(
+        (result) => {
+          if (!result.success) {
+            this.toastService.error({
+              message: result.message,
+              override: { timeOut: 5000 },
+            });
+            return;
+          }
+
+          if (result?.data?.roomId) {
+            this.exitPage = true;
+            this.storageService.setItem(
+              StorageEnum.USER,
+              JSON.stringify({ name: this.player.name, role: this.player.role })
+            );
+            this.storageService.setItem(
+              StorageEnum.JOINED_ROOM,
+              result?.data?.roomId
+            ); //TESTAR
+            this.router.navigate([`/planning/${result?.data?.roomId}`]);
+            this.loading = false;
+          }
+        },
+        (err) => {
+          this.loading = false;
         }
-        this.storageService.setItem(
-          StorageEnum.USER,
-          JSON.stringify({ name: this.player.name, role: this.player.role })
-        );
-        this.router.navigate([`/planning/${result?.data?.roomId}`]);
-      });
+      );
   }
 }

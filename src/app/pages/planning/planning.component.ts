@@ -44,12 +44,16 @@ export class PlanningComponent implements OnInit, OnDestroy {
   ) {
     this.roomId = this.activatedRoute.snapshot.paramMap.get('id') as string;
     this.getInfosUser();
+    window.onbeforeunload = (event) => {
+      this.leaveRoom();
+    };
   }
 
   ngOnDestroy(): void {
     for (const sub of this.subscriptions) {
       sub.unsubscribe();
     }
+    this.leaveRoom();
   }
 
   ngOnInit(): void {
@@ -115,6 +119,9 @@ export class PlanningComponent implements OnInit, OnDestroy {
           this.restartVotation();
         } else if (result.action === 'JOIN_ROOM') {
           this.userJoinRoom(result.data.player);
+        } else if (result.action === 'USER_LEAVED') {
+          //TESTAR
+          this.userLeaved(result.data?.userName);
         }
       })
     );
@@ -133,9 +140,14 @@ export class PlanningComponent implements OnInit, OnDestroy {
       return;
     }
     this.user = JSON.parse(user) as IPlayer;
+    if (this.storageService.getItem(StorageEnum.JOINED_ROOM) === this.roomId) {
+      //TESTAR
+      return;
+    }
     this.subscriptions.push(
       this.roomService.joinRoom(this.user, this.roomId).subscribe()
     );
+    this.storageService.setItem(StorageEnum.JOINED_ROOM, this.roomId); //TESTAR
   }
 
   restartVotation(): void {
@@ -184,5 +196,20 @@ export class PlanningComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  /* TESTAR */
+  leaveRoom(): void {
+    this.planningService.leaveRoom({
+      roomId: this.roomId,
+      userName: this.user.name,
+    });
+  }
+
+  userLeaved(userName: string) {
+    this.toastr.info({
+      message: `${userName} saiu da sala.`,
+      override: { timeOut: 5000 },
+    });
   }
 }
