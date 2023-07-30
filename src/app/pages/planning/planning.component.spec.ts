@@ -515,6 +515,7 @@ const planningServiceStub = {
       success: true,
     });
   },
+  leaveRoom(input: { roomId: string; userName: string }) {},
 };
 
 const toastServiceStub = {

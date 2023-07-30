@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -172,7 +177,7 @@ describe('JoinRoomComponent', () => {
     });
   });
 
-  it('[unit] #11 join room success', () => {
+  it('[unit] #11 join room success', fakeAsync(() => {
     spyOn((component as any).router, 'navigate');
     spyOn(component['storageService'], 'setItem');
 
@@ -181,15 +186,17 @@ describe('JoinRoomComponent', () => {
     component.room = 'test-id';
 
     component.joinRoom();
+    tick(750);
 
     expect(component['storageService'].setItem).toHaveBeenCalledWith(
       StorageEnum.USER,
       `{"name":"Test","role":"PLAYER"}`
     );
+
     expect((component as any).router.navigate).toHaveBeenCalledWith([
       `/planning/test-id`,
     ]);
-  });
+  }));
 
   it('[unit] #11 join room error', () => {
     spyOn(component['toastService'], 'error');

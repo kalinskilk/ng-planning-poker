@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -152,21 +157,23 @@ describe('NewRoomComponent', () => {
     expect((component as any).roomService.createNewRoom).not.toHaveBeenCalled();
   });
 
-  it('[unit] #10 create new room with name call http', () => {
+  it('[unit] #10 create new room with name call http', fakeAsync(() => {
     spyOn((component as any).storageService, 'setItem');
     spyOn((component as any).router, 'navigate');
     component.name = 'Test';
     component.role = RoleEnum.SCRUM_MASTER;
     component.createNewRoom();
+    tick(750);
 
     expect((component as any).storageService.setItem).toHaveBeenCalledWith(
       StorageEnum.USER,
       '{"name":"Test","role":"SM"}'
     );
+
     expect((component as any).router.navigate).toHaveBeenCalledWith([
       `/planning/test-id`,
     ]);
-  });
+  }));
 
   it('[integration] #11 create new room with name call http', async () => {
     spyOn(component, 'createNewRoom');
@@ -181,7 +188,7 @@ describe('NewRoomComponent', () => {
     expect(component.createNewRoom).toHaveBeenCalled();
   });
 
-  it('[unit] #12 join room success', () => {
+  it('[unit] #12 join room success', fakeAsync(() => {
     spyOn((component as any).router, 'navigate');
     spyOn(component['storageService'], 'setItem');
 
@@ -189,6 +196,7 @@ describe('NewRoomComponent', () => {
     component.role = RoleEnum.PLAYER;
 
     component.createNewRoom();
+    tick(750);
 
     expect(component['storageService'].setItem).toHaveBeenCalledWith(
       StorageEnum.USER,
@@ -197,7 +205,7 @@ describe('NewRoomComponent', () => {
     expect((component as any).router.navigate).toHaveBeenCalledWith([
       `/planning/test-id`,
     ]);
-  });
+  }));
 
   it('[unit] #13 join room error', () => {
     spyOn(component['toastService'], 'error');

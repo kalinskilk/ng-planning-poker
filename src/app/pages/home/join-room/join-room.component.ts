@@ -75,8 +75,10 @@ export class JoinRoomComponent {
               StorageEnum.JOINED_ROOM,
               result?.data?.roomId
             );
-            this.router.navigate([`/planning/${result?.data?.roomId}`]);
-            this.loading = false;
+            window.setTimeout(() => {
+              this.router.navigate([`/planning/${result?.data?.roomId}`]);
+              this.loading = false;
+            }, 750);
           }
         },
         (err) => {
