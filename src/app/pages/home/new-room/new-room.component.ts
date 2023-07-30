@@ -19,7 +19,7 @@ export class NewRoomComponent {
 
   @ViewChild('templateButtonNewRoom', { read: ViewContainerRef })
   templateButtonNewRoom!: ViewContainerRef;
-
+  loading = false;
   constructor(
     private storageService: StorageService,
     private roomService: RoomService,
@@ -40,27 +40,36 @@ export class NewRoomComponent {
   }
 
   createNewRoom(): void {
-    if (!this.name) {
+    if (!this.name || this.loading) {
       return;
     }
-    this.exitPage = true;
+    this.loading = true;
+
     this.roomService
       .createNewRoom({ name: this.name, role: this.role })
       .pipe(first())
-      .subscribe((result) => {
-        if (!result.success) {
-          this.toastService.error({
-            message: result.message,
-            override: { timeOut: 5000 },
-          });
-          return;
-        }
+      .subscribe(
+        (result) => {
+          this.exitPage = true;
+          if (!result.success) {
+            this.toastService.error({
+              message: result.message,
+              override: { timeOut: 5000 },
+            });
+            return;
+          }
 
-        this.storageService.setItem(
-          StorageEnum.USER,
-          JSON.stringify({ name: this.name, role: this.role })
-        );
-        this.router.navigate([`/planning/${result?.data?.roomId}`]);
-      });
+          this.storageService.setItem(
+            StorageEnum.USER,
+            JSON.stringify({ name: this.name, role: this.role })
+          );
+          window.setTimeout(() => {
+            this.router.navigate([`/planning/${result?.data?.roomId}`]);
+          }, 750);
+        },
+        (error) => {
+          this.loading = false;
+        }
+      );
   }
 }

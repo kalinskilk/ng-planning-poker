@@ -74,7 +74,7 @@ export class JoinRoomComponent {
             this.storageService.setItem(
               StorageEnum.JOINED_ROOM,
               result?.data?.roomId
-            ); //TESTAR
+            );
             this.router.navigate([`/planning/${result?.data?.roomId}`]);
             this.loading = false;
           }

@@ -6,13 +6,21 @@
   </a>&nbsp;
 </p>
 
+# O que é isso?
+
+Uma aplicação simples de planning poker para auxiliar na sua metodologia ágil.
+
+# Demo Vercel app
+
+Acesse: https://ng-planning-poker.vercel.app/#/
+
+_Obs: Usamos um servidor gratuito com sleeping._
+
 ## Repositório do Servidor
 
 https://github.com/kalinskilk/node-planning-poker
 
 ## Como usar
-
-  <!-- TODO DOCUMENTAR PARA DOCKER TBM -->
 
 - Instale as depencias utilizado `npm install` ou `yarn install`
 
@@ -20,64 +28,72 @@ https://github.com/kalinskilk/node-planning-poker
 
 - Execute o comando `npm start` ou `yarn start` tanto para o servidor como para o client
 
-## TODO
+# Como funciona?
 
-[X] TESTES DECK CARD COMPONENT
+Acesse: `http://localhost:4200`
 
-[X] TESTES DARK MODE BTN
+## Como criar uma nova sala
 
-[X] TESTES DASHBOARD
+![Alt text](./imgs-readme//home-page.jpg "home page")
 
-[X] TESTES PLANNING
+Crie uma sala
 
-[X] Implementar board cards
+![Alt text](./imgs-readme//new-room.jpg "new room page")
 
-[X] teste board cards
+Informe seu nome de usuário e escolha sua permissão no jogo. Salve.
 
-[X] teste com varios users
+![Alt text](./imgs-readme//planning.jpg "planning page")
 
-[X] LOGIN NOME E EMAIL, PEDIR ID DA ROOM
+Pronto agora basta compartilhar o link com seus colegas e jogar.
 
-[X] Integrar web sockets
+## Como entrar em uma sala
 
-[X] testar web sockets
+Você pode fazer de duas formas. Acessando um link com uma room id
+ou tendo a room id.
 
-[X] ROOM JOIN COMPONENT
-[X] ROOM JOIN SOCKET
+### Acessando via link
 
-[X] ROOM CREATE COMPONENT
-[X] ROOM CREATE SOCKET
+![Alt text](./imgs-readme//access-link.jpg "access link page")
 
-[X] ROOM END VOTATION
+Se for a sua primeira vez acessando você vera esta tela.
 
-[X] ROOM VIEW VOTES
+![Alt text](./imgs-readme//access-link-first-access.jpg "access link page")
 
-[X] ROOM RESTART VOTATION
+Basta informar seu nome e entrar na sala.
 
-[X] STORAGE SERVICE TEST
-[X] TOAST SERVICE TEST
+### Acessando via room id
 
-[] LISTAR USUARIOS ATIVOS MOSTRANDO AVATARS
+Para entrar em uma sala, acesse a tela inicial e clique em entrar em uma sala.
 
-[] MOSTRAR PONTUAÇÃO CAMPEÃ
+![Alt text](./imgs-readme//home-page.jpg "home page")
 
-[] VERIFICAR COMPONENT CARD HOME PARA RECEBER O DARK MODE
+Em seguida informe seu nome e o código da sala. Depois clique em entrar na sala.
 
-# CI/CD ACTIONS
+![Alt text](./imgs-readme//access-room-by-room-id.jpg "join room")
 
-[x] TESTS
+# Jogando
 
-[ ] BUILD
+- Regra: ao menos um jogador precisar ser scrum master para poder virar as cartas.
 
-[ ] DEPLOY ON VERCEL
+Para votar na sua pontuação basta clicar nos cards abaixo.
 
-[X] CIRCLECI
+![Alt text](./imgs-readme//voting.jpg "voting")
 
-# AJUSTAR README
+Para virar as cartas basta clicar no botão flutuante com icone de olho.
 
-Reescrever readme.
+![Alt text](./imgs-readme//show-votes.jpg "show votes")
 
-# LIBS
+Para reiniciar a votação basta clicar no mesmo botão.
+
+# Dark e Light theme
+
+Caso queira você pode optar pelo modo dark ou light theme. Basta clicar no botão de alteração de tema.
+
+![Alt text](./imgs-readme//light-theme.jpg "light theme")
+
+# LIBS Utilizadas
+
+Framework Front-end: `Angular`
 
 Toast: `ngx-toastr`
 

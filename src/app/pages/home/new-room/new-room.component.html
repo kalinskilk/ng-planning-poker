@@ -34,7 +34,14 @@
     class="btn btn-sm btn-block btn-card"
     (click)="createNewRoom()"
     id="btn-new-room"
+    [disabled]="loading"
   >
+    <span
+      class="spinner-border spinner-border-sm"
+      role="status"
+      aria-hidden="true"
+      *ngIf="loading"
+    ></span>
     Criar sala
   </button>
 </ng-template>
